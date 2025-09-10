@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "www",
+    "rootDir": "src/web",
+    "module": "ES2020",
+    "target": "ES2020"
+  },
+  "include": ["src/web/**/*.ts"],
+  "exclude": ["node_modules", "build", "dist", "out"]
+}
+

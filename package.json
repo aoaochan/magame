@@ -1,0 +1,94 @@
+{
+  "name": "magame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/backend/main.js",
+  "scripts": {
+    "start": "pnpm run app:dev",
+    
+    "clean": "pnpm run clean:all",
+    "clean:all": "shx rm -rf build dist out www",
+    "clean:app": "shx rm -rf build dist out",
+    "clean:web": "shx rm -rf www",
+
+    "app:build": "tsc -p . && shx mkdir -p build/frontend && shx cp -r src/frontend/*.html build/frontend/ && node -e \"const fs=require('fs');const p='build/frontend/index.html';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('renderer.ts','renderer.js'));\" && esbuild src/frontend/renderer.ts --bundle --format=esm --platform=browser --target=es2020 --outfile=build/frontend/renderer.js",
+    "app:dev": "pnpm run clean:app && shx mkdir -p build/frontend && shx cp -r src/frontend/*.html build/frontend/ && concurrently --kill-others --success first -n forge,tsc,html,rbuild -c blue,green,yellow,magenta \"wait-on build/backend/main.js && electron-forge start\" \"tsc -p . --watch\" \"chokidar 'src/frontend/**/*.html' --initial -c 'shx mkdir -p build/frontend && shx cp -r src/frontend/*.html build/frontend/'\" \"esbuild src/frontend/renderer.ts --bundle --format=esm --platform=browser --target=es2020 --outfile=build/frontend/renderer.js --watch\"",
+    "app:package": "pnpm run app:build && electron-forge package",
+    "app:make": "pnpm run app:build && electron-forge make",
+    "app:dist": "pnpm run app:build && electron-builder",
+    "app:dist:mac": "pnpm run app:build && electron-builder --mac zip",
+    "app:dist:win": "pnpm run app:build && electron-builder --win portable",
+
+    "web:dev": "vite --open --port 5173",
+    "web:build": "vite build",
+    "typecheck:renderer": "tsc -p tsconfig.renderer.json --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.9.0",
+    "@electron-forge/maker-dmg": "^7.9.0",
+    "@electron-forge/maker-squirrel": "^7.9.0",
+    "@electron-forge/maker-zip": "^7.9.0",
+    "electron": "^38.0.0",
+    "electron-builder": "^24.13.3",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.23.1",
+    "electron-reload": "^2.0.0-alpha.1",
+    "shx": "^0.3.4",
+    "vite": "^5.4.8",
+    "wait-on": "^7.2.0",
+    "typescript": "^5.6.2",
+    "@types/node": "^22.7.5"
+  },
+  "dependencies": {}
+  ,
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "platforms": ["win32"],
+          "config": {
+            "name": "magame",
+            "overwrite": true
+          }
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "platforms": ["darwin"],
+          "config": {
+            "format": "ULFO"
+          }
+        }
+      ]
+    }
+  }
+  ,
+  "build": {
+    "appId": "com.example.magame",
+    "productName": "magame",
+    "asar": true,
+    "files": [
+      "build/**",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": ["zip"],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "win": {
+      "target": ["portable"],
+      "artifactName": "${productName}-portable-${version}-${arch}.${ext}"
+    }
+  }
+}
