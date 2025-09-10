@@ -1,0 +1,152 @@
+C:\Users\freya\Desktop\magame>pnpm app:dist:win 
+
+> magame@1.0.0 app:dist:win C:\Users\freya\Desktop\magame
+> pnpm run app:build && electron-builder --win portable
+
+
+> magame@1.0.0 app:build C:\Users\freya\Desktop\magame
+> tsc -p . && shx mkdir -p build/frontend && shx cp -r src/frontend/*.html build/frontend/ && node -e "const fs=require('fs');const p='build/frontend/index.html';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('renderer.ts','renderer.js'));" && esbuild src/frontend/renderer.ts --bundle --format=esm --platform=browser --target=es2020 --outfile=build/frontend/renderer.js
+
+
+  build\frontend\renderer.js  2.2kb
+
+Done in 16ms
+  • electron-builder  version=24.13.3 os=10.0.26100
+  • loaded configuration  file=package.json ("build" field)
+  • description is missed in the package.json  appPackageFile=C:\Users\freya\Desktop\magame\package.json
+  • writing effective config  file=dist\builder-effective-config.yaml
+  • packaging       platform=win32 arch=x64 electron=38.0.0 appOutDir=dist\win-unpacked
+  • downloading     url=https://github.com/electron/electron/releases/download/v38.0.0/electron-v38.0.0-win32-x64.zip size=126 MB parts=8
+  • downloaded      url=https://github.com/electron/electron/releases/download/v38.0.0/electron-v38.0.0-win32-x64.zip duration=3.526s
+  • default Electron icon is used  reason=application icon is not set
+  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z size=5.6 MB parts=1
+  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z duration=598ms
+  ⨯ cannot execute  cause=exit status 2
+                    out=
+    7-Zip (a) 21.07 (x64) : Copyright (c) 1999-2021 Igor Pavlov : 2021-12-26
+
+    Scanning the drive for archives:
+    1 file, 5635384 bytes (5504 KiB)
+
+    Extracting archive: C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\345460539.7z
+    --
+    Path = C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\345460539.7z
+    Type = 7z
+    Physical Size = 5635384
+    Headers Size = 1492
+    Method = LZMA2:24m LZMA:20 BCJ2
+    Solid = +
+    Blocks = 2
+
+
+    Sub items Errors: 2
+
+    Archives with Errors: 1
+
+    Sub items Errors: 2
+
+                    errorOut=ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\345460539\darwin\10.12\lib\libcrypto.dylib
+    ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\345460539\darwin\10.12\lib\libssl.dylib
+
+                    command='C:\Users\freya\Desktop\magame\node_modules\7zip-bin\win\x64\7za.exe' x -bd 'C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\345460539.7z' '-oC:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\345460539'
+                    workingDir=C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign
+  • Above command failed, retrying 3 more times
+  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z size=5.6 MB parts=1
+  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z duration=329ms
+  ⨯ cannot execute  cause=exit status 2
+                    out=
+    7-Zip (a) 21.07 (x64) : Copyright (c) 1999-2021 Igor Pavlov : 2021-12-26
+
+    Scanning the drive for archives:
+    1 file, 5635384 bytes (5504 KiB)
+
+    Extracting archive: C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\212781811.7z
+    --
+    Path = C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\212781811.7z
+    Type = 7z
+    Physical Size = 5635384
+    Headers Size = 1492
+    Method = LZMA2:24m LZMA:20 BCJ2
+    Solid = +
+    Blocks = 2
+
+
+    Sub items Errors: 2
+
+    Archives with Errors: 1
+
+    Sub items Errors: 2
+
+                    errorOut=ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\212781811\darwin\10.12\lib\libcrypto.dylib
+    ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\212781811\darwin\10.12\lib\libssl.dylib
+
+                    command='C:\Users\freya\Desktop\magame\node_modules\7zip-bin\win\x64\7za.exe' x -bd 'C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\212781811.7z' '-oC:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\212781811'
+                    workingDir=C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign
+  • Above command failed, retrying 2 more times
+  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z size=5.6 MB parts=1
+  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z duration=316ms
+  ⨯ cannot execute  cause=exit status 2
+                    out=
+    7-Zip (a) 21.07 (x64) : Copyright (c) 1999-2021 Igor Pavlov : 2021-12-26
+
+    Scanning the drive for archives:
+    1 file, 5635384 bytes (5504 KiB)
+
+    Extracting archive: C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\785458519.7z
+    --
+    Path = C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\785458519.7z
+    Type = 7z
+    Physical Size = 5635384
+    Headers Size = 1492
+    Method = LZMA2:24m LZMA:20 BCJ2
+    Solid = +
+    Blocks = 2
+
+
+    Sub items Errors: 2
+
+    Archives with Errors: 1
+
+    Sub items Errors: 2
+
+                    errorOut=ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\785458519\darwin\10.12\lib\libcrypto.dylib
+    ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\785458519\darwin\10.12\lib\libssl.dylib
+
+                    command='C:\Users\freya\Desktop\magame\node_modules\7zip-bin\win\x64\7za.exe' x -bd 'C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\785458519.7z' '-oC:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\785458519'
+                    workingDir=C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign
+  • Above command failed, retrying 1 more times
+  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z size=5.6 MB parts=1
+  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z duration=307ms
+  ⨯ cannot execute  cause=exit status 2
+                    out=
+    7-Zip (a) 21.07 (x64) : Copyright (c) 1999-2021 Igor Pavlov : 2021-12-26
+
+    Scanning the drive for archives:
+    1 file, 5635384 bytes (5504 KiB)
+
+    Extracting archive: C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\751626459.7z
+    --
+    Path = C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\751626459.7z
+    Type = 7z
+    Physical Size = 5635384
+    Headers Size = 1492
+    Method = LZMA2:24m LZMA:20 BCJ2
+    Solid = +
+    Blocks = 2
+
+
+    Sub items Errors: 2
+
+    Archives with Errors: 1
+
+    Sub items Errors: 2
+
+                    errorOut=ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\751626459\darwin\10.12\lib\libcrypto.dylib
+    ERROR: Cannot create symbolic link : Ŭ���̾�Ʈ�� �ʿ��� ������ ������ ���� �ʽ��ϴ�. : C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\751626459\darwin\10.12\lib\libssl.dylib
+
+                    command='C:\Users\freya\Desktop\magame\node_modules\7zip-bin\win\x64\7za.exe' x -bd 'C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\751626459.7z' '-oC:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign\751626459'
+                    workingDir=C:\Users\freya\AppData\Local\electron-builder\Cache\winCodeSign
+  • Above command failed, retrying 0 more times
+ ELIFECYCLE  Command failed with exit code 1.
+
+C:\Users\freya\Desktop\magame>
